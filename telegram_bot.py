@@ -13,7 +13,7 @@ from telegram.ext import (
 )
 
 # ========== إعدادات البوت ==========
-BOT_TOKEN = "8742710060:AAG9idUZxNJ34chMknDf6qVnHgbhRzLDTlw"
+BOT_TOKEN = "8742710060:AAHir2djBn8Eb_YEYWHef2c5Bczw8GkFznQ"
 API_BASE_URL = os.environ.get("API_BASE_URL", "https://mero-host.onrender.com")
 
 # إيدي الأدمن على تليجرام
