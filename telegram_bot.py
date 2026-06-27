@@ -89,7 +89,7 @@ async def show_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, edi
             InlineKeyboardButton(bell, callback_data="admin_notifications"),
         ])
 
-    keyboard.append([InlineKeyboardButton("💬 تواصل مع المطور @ihh_4", url="https://t.me/I_tt_6")])
+    keyboard.append([InlineKeyboardButton("تواصل", url="https://t.me/ihh_4")])
 
     text = (
         "━━━━━━━━━━━━━━━━━━━━\n"
