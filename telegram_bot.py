@@ -13,7 +13,7 @@ from telegram.ext import (
 )
 
 # ========== إعدادات البوت ==========
-BOT_TOKEN = "8107118673:AAG6xUifqFD5qtCWZMy_D9qEmC8HOCx4DBo"
+BOT_TOKEN = "8742710060:AAG9idUZxNJ34chMknDf6qVnHgbhRzLDTlw"
 API_BASE_URL = os.environ.get("API_BASE_URL", "https://mero-host.onrender.com")
 
 # إيدي الأدمن على تليجرام
@@ -53,7 +53,7 @@ def api_request(endpoint, method="GET", data=None, params=None, api_key=None):
 
 
 def is_admin_tg(update: Update) -> bool:
-    return update.effective_chat.id in ADMIN_TELEGRAM_IDS
+    return update.effective_user.id in ADMIN_TELEGRAM_IDS
 
 
 # ─────────────────────────────────────────────────
@@ -398,6 +398,7 @@ async def receive_server_type(update: Update, context: ContextTypes.DEFAULT_TYPE
 # ─────────────────────────────────────────────────
 async def show_console(update: Update, context: ContextTypes.DEFAULT_TYPE, folder: str):
     query = update.callback_query
+    await query.answer()          # ✅ إلغاء التحميل
     result = api_request("/api/bot/console", params={"folder": folder}, api_key=context.user_data.get("api_key"))
     if result and result.get("success"):
         logs = result.get("logs", "لا توجد مخرجات")
@@ -418,6 +419,7 @@ async def show_console(update: Update, context: ContextTypes.DEFAULT_TYPE, folde
 
 async def show_errors(update: Update, context: ContextTypes.DEFAULT_TYPE, folder: str):
     query = update.callback_query
+    await query.answer()          # ✅ إلغاء التحميل
     result = api_request("/api/bot/errors", params={"folder": folder}, api_key=context.user_data.get("api_key"))
     if result and result.get("success"):
         errors = result.get("errors", "✅ لا توجد أخطاء")
@@ -484,6 +486,7 @@ async def admin_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ─────────────────────────────────────────────────
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+    await query.answer()          # ✅ إلغاء التحميل فوراً لكل الأزرار
     data = query.data
 
     # أزرار بدون "|"
@@ -585,16 +588,20 @@ def main():
         ],
         states={
             WAITING_FOR_API_KEY: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_api_key)
+                CallbackQueryHandler(button_callback),               # ✅ الأزرار تعمل داخل هذه الحالة
+                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_api_key),
             ],
             WAITING_FOR_NEW_SERVER_NAME: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, receive_server_name)
+                CallbackQueryHandler(button_callback),               # ✅ الأزرار تعمل داخل هذه الحالة
+                MessageHandler(filters.TEXT & ~filters.COMMAND, receive_server_name),
             ],
             WAITING_FOR_SERVER_TYPE: [
-                CallbackQueryHandler(receive_server_type, pattern="^server_type_")
+                CallbackQueryHandler(receive_server_type, pattern="^server_type_"),
+                CallbackQueryHandler(button_callback),               # ✅ أزرار الرجوع وغيرها
             ],
             WAITING_FOR_DELETE_USERNAME: [
-                MessageHandler(filters.TEXT & ~filters.COMMAND, admin_delete_user_confirm)
+                CallbackQueryHandler(button_callback),               # ✅ الأزرار تعمل داخل هذه الحالة
+                MessageHandler(filters.TEXT & ~filters.COMMAND, admin_delete_user_confirm),
             ],
         },
         fallbacks=[CommandHandler("start", start)],
