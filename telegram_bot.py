@@ -13,14 +13,14 @@ from telegram.ext import (
 )
 
 # ========== إعدادات البوت ==========
-BOT_TOKEN = "8742710060:AAHE3L-OVtJIQ9_H-4hvs2Lqlm3K3ltkrmo"
+BOT_TOKEN = "8742710060:AAG9idUZxNJ34chMknDf6qVnHgbhRzLDTlw"
 API_BASE_URL = os.environ.get("API_BASE_URL", "https://mero-host.onrender.com")
 
 # إيدي الأدمن على تليجرام
 ADMIN_TELEGRAM_IDS = [8775324279]
 
 # معلومات المطور
-DEVELOPER_INFO = "🛠 طُوِّر بواسطة: *ᗴᒪᗰOᗪᗰᗴᑎ*\n📬 تواصل: @ihh_4"
+DEVELOPER_INFO = "المطور: @ihh_4"
 
 # ========== حالات المحادثة ==========
 (
