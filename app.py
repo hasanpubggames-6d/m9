@@ -29,8 +29,8 @@ app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 
 # ============== بيانات المسؤول ==============
-ADMIN_USERNAME = "8775324279"
-ADMIN_PASSWORD_RAW = "8775324279"
+ADMIN_USERNAME = "hasan90x"
+ADMIN_PASSWORD_RAW = "endeth"
 
 # ============== إعدادات البوت والإشعارات ==============
 BOT_TOKEN = "8778306157:AAHYfdaHA88vxofEKLVqu8RvWY6blZ62r-c"
