@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 𝙼𝙴𝚁𝙾 𝙷𝙾𝚂𝚃 - بوت التحكم الكامل
-طُوِّر بواسطة: ᗴᒪᗰOᗪᗰᗴᑎ | @I_tt_6
+طُوِّر بواسطة: HASAN | @ihh_4
 """
 
 import os
@@ -20,7 +20,7 @@ API_BASE_URL = os.environ.get("API_BASE_URL", "https://mero-host.onrender.com")
 ADMIN_TELEGRAM_IDS = [8775324279]
 
 # معلومات المطور
-DEVELOPER_INFO = "🛠 طُوِّر بواسطة: *ᗴᒪᗰOᗪᗰᗴᑎ*\n📬 تواصل: @I_tt_6"
+DEVELOPER_INFO = "🛠 طُوِّر بواسطة: *ᗴᒪᗰOᗪᗰᗴᑎ*\n📬 تواصل: @ihh_4"
 
 # ========== حالات المحادثة ==========
 (
@@ -89,7 +89,7 @@ async def show_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, edi
             InlineKeyboardButton(bell, callback_data="admin_notifications"),
         ])
 
-    keyboard.append([InlineKeyboardButton("💬 تواصل مع المطور @I_tt_6", url="https://t.me/I_tt_6")])
+    keyboard.append([InlineKeyboardButton("💬 تواصل مع المطور @ihh_4", url="https://t.me/I_tt_6")])
 
     text = (
         "━━━━━━━━━━━━━━━━━━━━\n"
@@ -297,14 +297,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     keyboard = [
         [InlineKeyboardButton("🔑 إدخال API Key", callback_data="enter_api")],
-        [InlineKeyboardButton("💬 تواصل مع المطور @I_tt_6", url="https://t.me/I_tt_6")],
+        [InlineKeyboardButton("💬 تواصل مع المطور @ihh_4", url="https://t.me/I_tt_6")],
     ]
     await update.message.reply_text(
         "━━━━━━━━━━━━━━━━━━━━\n"
         "      𝙼𝙴𝚁𝙾 𝙷𝙾𝚂𝚃 🚀\n"
         "━━━━━━━━━━━━━━━━━━━━\n"
         "للاشتراك والحصول على حساب:\n"
-        "📬 تواصل مع المطور: @I_tt_6\n\n"
+        "📬 تواصل مع المطور: @Ihh_4\n\n"
         f"{DEVELOPER_INFO}",
         parse_mode="Markdown",
         reply_markup=InlineKeyboardMarkup(keyboard),
@@ -320,7 +320,7 @@ async def handle_api_key(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(
             "❌ *مفتاح API غير صالح!*\n\n"
             "تحقق من الكود وحاول مرة أخرى\n"
-            "أو تواصل مع المطور: @I_tt_6",
+            "أو تواصل مع المطور: @ihh_4",
             parse_mode="Markdown",
             reply_markup=InlineKeyboardMarkup(keyboard),
         )
